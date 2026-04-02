@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Button Colors Prototype</title>
+  <style>
+
+    /* ═══════════════════════════════════════════════════════════════════
+       LAYER 1 — Primitive tokens
+       ═══════════════════════════════════════════════════════════════════ */
+    :root {
+      --prim-blue-0:   #EBF2FF;
+      --prim-blue-5:   #DFE9FA;
+      --prim-blue-10:  #C2D5F8;
+      --prim-blue-20:  #88B0F7;
+      --prim-blue-30:  #5591FA;
+      --prim-blue-40:  #2E76FB;
+      --prim-blue-50:  #0B5EF5;
+      --prim-blue-60:  #004ACE;
+      --prim-blue-70:  #0036B5;
+      --prim-blue-80:  #04289E;
+      --prim-blue-90:  #0C1F7F;
+      --prim-blue-95:  #1A295A;
+      --prim-blue-100: #1A253B;
+
+      --prim-neutral-0:   #F5F5F7;
+      --prim-neutral-5:   #F2F2F5;
+      --prim-neutral-10:  #E2E2E9;
+      --prim-neutral-20:  #C8C8D0;
+      --prim-neutral-30:  #ACACB9;
+      --prim-neutral-40:  #9191A1;
+      --prim-neutral-50:  #787887;
+      --prim-neutral-60:  #5F5F6C;
+      --prim-neutral-70:  #484853;
+      --prim-neutral-80:  #3B3B47;
+      --prim-neutral-90:  #2E2E38;
+      --prim-neutral-95:  #1A1A20;
+      --prim-neutral-100: #0B0B0D;
+
+      --prim-red-0:   #FFF2F0;
+      --prim-red-5:   #FFDFDB;
+      --prim-red-10:  #FFC4BF;
+      --prim-red-20:  #FF9E96;
+      --prim-red-30:  #FF776B;
+      --prim-red-40:  #FE5443;
+      --prim-red-50:  #E62717;
+      --prim-red-60:  #CC1808;
+      --prim-red-70:  #AD180B;
+      --prim-red-80:  #8F170C;
+      --prim-red-95:  #48140F;
+      --prim-red-100: #311A1A;
+
+      --prim-white-0:   rgba(255,255,255,0);
+      --prim-white-5:   rgba(255,255,255,0.05);
+      --prim-white-10:  rgba(255,255,255,0.1);
+      --prim-white-15:  rgba(255,255,255,0.15);
+      --prim-white-20:  rgba(255,255,255,0.2);
+      --prim-white-25:  rgba(255,255,255,0.25);
+      --prim-white-30:  rgba(255,255,255,0.3);
+      --prim-white-35:  rgba(255,255,255,0.35);
+      --prim-white-40:  rgba(255,255,255,0.4);
+      --prim-white-45:  rgba(255,255,255,0.45);
+      --prim-white-50:  rgba(255,255,255,0.5);
+      --prim-white-55:  rgba(255,255,255,0.55);
+      --prim-white-60:  rgba(255,255,255,0.6);
+      --prim-white-65:  rgba(255,255,255,0.65);
+      --prim-white-70:  rgba(255,255,255,0.7);
+      --prim-white-75:  rgba(255,255,255,0.75);
+      --prim-white-80:  rgba(255,255,255,0.8);
+      --prim-white-85:  rgba(255,255,255,0.85);
+      --prim-white-90:  rgba(255,255,255,0.9);
+      --prim-white-95:  rgba(255,255,255,0.95);
+      --prim-white-100: #FFFFFF;
+
+      --prim-black-0:   rgba(3,3,29,0);
+      --prim-black-5:   rgba(3,3,29,0.05);
+      --prim-black-10:  rgba(3,3,29,0.09);
+      --prim-black-15:  rgba(4,3,28,0.15);
+      --prim-black-20:  rgba(5,4,27,0.2);
+      --prim-black-25:  rgba(6,5,26,0.25);
+      --prim-black-30:  rgba(7,6,24,0.3);
+      --prim-black-35:  rgba(8,7,22,0.35);
+      --prim-black-40:  rgba(9,8,21,0.4);
+      --prim-black-45:  rgba(10,9,20,0.45);
+      --prim-black-50:  rgba(11,10,19,0.5);
+      --prim-black-55:  rgba(12,11,18,0.55);
+      --prim-black-60:  rgba(13,12,17,0.6);
+      --prim-black-65:  rgba(14,13,16,0.65);
+      --prim-black-70:  rgba(15,14,16,0.7);
+      --prim-black-75:  rgba(16,16,16,0.75);
+      --prim-black-80:  rgba(16,16,16,0.8);
+      --prim-black-85:  rgba(16,16,16,0.85);
+      --prim-black-90:  rgba(16,16,16,0.9);
+      --prim-black-95:  rgba(16,16,16,0.95);
+      --prim-black-100: #101010;
+
+
+      /* Dynamic base color — the ONE random color shared by all three surfaces (set by JS) */
+      --prim-dynamic-base: hsl(220, 75%, 55%);
+
+      /* Dynamic button accent scale — based on sp hue (set by JS) */
+      --prim-dynamic-0:   hsl(220,100%,99%);
+      --prim-dynamic-5:   hsl(220, 85%, 96%);
+      --prim-dynamic-10:  hsl(220, 70%, 92%);
+      --prim-dynamic-20:  hsl(220, 55%, 84%);
+      --prim-dynamic-30:  hsl(220, 50%, 73%);
+      --prim-dynamic-40:  hsl(220, 52%, 62%);
+      --prim-dynamic-50:  hsl(220, 58%, 50%);
+      --prim-dynamic-60:  hsl(220, 62%, 39%);
+      --prim-dynamic-70:  hsl(220, 62%, 29%);
+      --prim-dynamic-80:  hsl(220, 58%, 20%);
+      --prim-dynamic-90:  hsl(220, 52%, 13%);
+      --prim-dynamic-100: hsl(220, 46%,  7%);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       LAYER 2 — UI chrome tokens (not in JSON — prototype-only)
+       Button/surface tokens come from tokens.css
+       ═══════════════════════════════════════════════════════════════════ */
+    :root,
+    [data-theme="light"] {
+      --page-bg:      var(--prim-neutral-5);
+      --page-text:    var(--prim-neutral-90);
+      --label-color:  var(--prim-neutral-50);
+      --divider:      var(--prim-black-5);
+      --panel-bg:     var(--prim-white-100);
+      --panel-border: var(--prim-neutral-10);
+
+      --shadow-sm:          var(--prim-black-20);
+      --shadow-md:          var(--prim-black-15);
+      --swatch-border:      var(--prim-black-10);
+      --swatch-border-sm:   var(--prim-black-10);
+      --accent-tint:        var(--prim-blue-0);
+      --accent-tint-strong: var(--prim-blue-5);
+    }
+
+    [data-theme="dark"] {
+      --page-bg:      var(--prim-neutral-100);
+      --page-text:    var(--prim-white-100);
+      --label-color:  var(--prim-neutral-40);
+      --divider:      var(--prim-white-5);
+      --panel-bg:     var(--prim-neutral-95);
+      --panel-border: var(--prim-neutral-80);
+
+      --shadow-sm:          var(--prim-black-20);
+      --shadow-md:          var(--prim-black-15);
+      --swatch-border:      var(--prim-black-10);
+      --swatch-border-sm:   var(--prim-black-10);
+      --accent-tint:        var(--prim-neutral-80);
+      --accent-tint-strong: var(--prim-neutral-70);
+    }
+
+    [data-theme="dynamic"] {
+      /* Page uses the random base color set by JS shuffle */
+      --page-bg:      var(--prim-dynamic-base);
+      --page-text:    var(--prim-white-100);
+      --label-color:  var(--prim-white-80);
+      --divider:      var(--prim-black-20);
+      --panel-bg:     var(--prim-dynamic-base);
+      --panel-border: var(--prim-black-20);
+
+      --shadow-sm:          var(--prim-black-20);
+      --shadow-md:          var(--prim-black-15);
+      --swatch-border:      var(--prim-black-10);
+      --swatch-border-sm:   var(--prim-black-10);
+      --accent-tint:        var(--prim-white-10);
+      --accent-tint-strong: var(--prim-white-20);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       BASE
+       ═══════════════════════════════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      background: var(--page-bg);
+      color: var(--page-text);
+      min-height: 100vh;
+      padding: 36px 48px 80px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    /* ── Content wrapper ─────────────────────────────────────────────── */
+    .content {
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ──────────────────────────────────────────────────────── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 24px;
+    }
+    .header h1 { font-size: 18px; font-weight: 600; letter-spacing: -0.3px; }
+    .header p  { font-size: 12px; color: var(--label-color); margin-top: 3px; }
+
+    /* ── Theme toggle ────────────────────────────────────────────────── */
+    /* ── Mode control (segmented: Light / Dark / Dynamic) ────────────── */
+    .mode-control {
+      display: flex;
+      background: var(--divider);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+      flex-shrink: 0;
+    }
+    .mode-btn {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 5px 14px;
+      border-radius: 9999px;
+      border: none;
+      background: transparent;
+      color: var(--label-color);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .mode-btn.active {
+      background: var(--panel-bg);
+      color: var(--page-text);
+      box-shadow: 0 1px 3px var(--shadow-sm);
+    }
+
+    /* ── Playground panel ────────────────────────────────────────────── */
+    .playground {
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 16px;
+      padding: 24px 24px 28px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .playground-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .playground-header-text { display: flex; align-items: baseline; gap: 10px; }
+    .playground-header h2 { font-size: 13px; font-weight: 600; }
+    .playground-header p  { font-size: 12px; color: var(--label-color); }
+
+    /* ── Shuffle button (Dynamic mode only) ──────────────────────────── */
+    .shuffle-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--panel-border);
+      background: var(--panel-bg);
+      color: var(--label-color);
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, border-color 0.15s, color 0.15s;
+      flex-shrink: 0;
+    }
+    .shuffle-btn:hover {
+      background: var(--divider);
+      border-color: var(--label-color);
+      color: var(--page-text);
+    }
+    [data-theme="dynamic"] .shuffle-btn { display: flex; }
+
+    /* Mode control on colored background */
+    [data-theme="dynamic"] .mode-control { background: var(--prim-black-20); }
+    [data-theme="dynamic"] .mode-btn { color: var(--prim-white-80); }
+    [data-theme="dynamic"] .mode-btn.active {
+      background: var(--prim-white-95);
+      color: var(--prim-neutral-90);
+    }
+
+    /* ── Column grid: label | cell-sp | cell-ss | cell-st | reset ────── */
+    .pg-col-header,
+    .pg-row {
+      display: grid;
+      grid-template-columns: 108px 1fr 1fr 1fr 64px;
+      gap: 0;
+      align-items: start;
+    }
+
+    /* ── Column header row ───────────────────────────────────────────── */
+    .pg-col-header {
+      padding: 0 0 10px;
+      border-bottom: 1px solid var(--panel-border);
+      margin-bottom: 2px;
+      align-items: end;
+    }
+    .pg-ch-surface {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--label-color);
+      text-align: center;
+      padding: 4px 0;
+    }
+
+    /* ── Group containers ────────────────────────────────────────────── */
+    .pg-section-label {
+      padding: 20px 0 4px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--label-color);
+      opacity: 0.55;
+    }
+    .pg-group { margin-top: 8px; }
+    .pg-group:first-child { margin-top: 0; }
+
+    /* ── Left-column labels ──────────────────────────────────────────── */
+    .pg-group-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--label-color);
+      padding: 16px 12px 0 0;
+      align-self: start;
+    }
+    .pg-state-label-cell {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--label-color);
+      opacity: 0.65;
+      padding: 0 12px 0 14px;  /* indent under group label */
+      align-self: center;
+    }
+
+    /* ── Variant cells ───────────────────────────────────────────────── */
+    .variant-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      align-self: stretch;
+      transition: background 0.2s;
+    }
+    .variant-cell.sp { background: var(--surface-primary); }
+    .variant-cell.ss { background: var(--surface-secondary); }
+    .variant-cell.st { background: var(--surface-tertiary); }
+
+    /* Button row cells */
+    .pg-row-btns .variant-cell {
+      padding: 16px 20px 14px;
+      justify-content: center;
+    }
+    /* State row cells */
+    .pg-row-state .variant-cell { padding: 4px 20px; }
+    .pg-row-state:last-child .variant-cell { padding-bottom: 18px; }
+
+    /* Rounded corners scoped per group */
+    .pg-group .pg-row:first-child .variant-cell.sp { border-radius: 8px 0 0 0; }
+    .pg-group .pg-row:first-child .variant-cell.st { border-radius: 0 8px 0 0; }
+    .pg-group .pg-row:last-child  .variant-cell.sp { border-radius: 0 0 0 8px; }
+    .pg-group .pg-row:last-child  .variant-cell.st { border-radius: 0 0 8px 0; }
+
+    /* Buttons in button rows */
+    .pg-row-btns .variant-cell .btn {
+      width: 100%;
+      height: 46px;
+      padding: 0;
+      font-size: 14px;
+    }
+    .pg-row-btns .variant-cell .btn.btn-icon-only {
+      width: 46px;
+      padding: 0;
+    }
+
+    /* Pickers inside state-row cells */
+    .vc-pickers {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      width: 100%;
+    }
+
+    /* ── Reset button ────────────────────────────────────────────────── */
+    .pg-reset {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      border: 1.5px solid var(--panel-border);
+      background: transparent;
+      color: var(--label-color);
+      cursor: not-allowed;
+      opacity: 0.3;
+      transition: all 0.15s;
+      white-space: nowrap;
+      font-family: inherit;
+      align-self: start;
+      margin-top: 14px;
+    }
+    .pg-reset.active {
+      cursor: pointer;
+      opacity: 1;
+      background: var(--prim-blue-50);
+      color: var(--prim-white-100);
+      border-color: var(--prim-blue-50);
+    }
+    .pg-reset.active:hover {
+      background: var(--prim-blue-40);
+      border-color: var(--prim-blue-40);
+    }
+
+    /* ── Picker ──────────────────────────────────────────────────────── */
+    .picker { position: relative; }
+
+    .picker-trigger {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 8px;
+      border-radius: 7px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.12s;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    .picker-trigger:hover { background: var(--divider); }
+    .picker.open .picker-trigger,
+    .picker.modified .picker-trigger {
+      background: var(--accent-tint);
+    }
+
+    .picker-swatch {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid var(--swatch-border);
+    }
+    .picker-swatch.is-transparent {
+      background: conic-gradient(var(--prim-neutral-20) 90deg, var(--prim-white-100) 90deg 180deg, var(--prim-neutral-20) 180deg 270deg, var(--prim-white-100) 270deg) 0/8px 8px !important;
+    }
+
+    .picker-label-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 0;
+    }
+    .picker-prop {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--label-color);
+      line-height: 1.3;
+    }
+    .picker-name {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--page-text);
+      line-height: 1.3;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .picker.modified .picker-name { color: var(--prim-blue-50); }
+
+    .picker-chevron {
+      color: var(--label-color);
+      flex-shrink: 0;
+      opacity: 0.45;
+    }
+
+    /* Dropdown */
+    .picker-dropdown {
+      display: none;
+      position: absolute;
+      top: calc(100% + 4px);
+      left: 0;
+      z-index: 100;
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      border-radius: 12px;
+      padding: 6px;
+      min-width: 164px;
+      box-shadow: 0 8px 28px var(--shadow-md);
+    }
+    .picker.open .picker-dropdown { display: block; }
+
+    .picker-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--page-text);
+      transition: background 0.1s;
+    }
+    .picker-option:hover { background: var(--divider); }
+    .picker-option.selected { background: var(--accent-tint-strong); }
+    .picker-option.selected .opt-name { color: var(--prim-blue-50); }
+
+    .opt-swatch {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      border: 1px solid var(--swatch-border-sm);
+    }
+    .opt-swatch.is-transparent {
+      background: conic-gradient(var(--prim-neutral-20) 90deg, var(--prim-white-100) 90deg 180deg, var(--prim-neutral-20) 180deg 270deg, var(--prim-white-100) 270deg) 0/8px 8px !important;
+    }
+    .opt-name { flex: 1; }
+    .opt-default-tag {
+      font-size: 9px;
+      font-weight: 600;
+      padding: 1px 5px;
+      border-radius: 9999px;
+      background: var(--divider);
+      color: var(--label-color);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       BUTTON BASE
+       ═══════════════════════════════════════════════════════════════════ */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 9999px;
+      font-family: inherit; font-weight: 500; font-size: 15px;
+      height: 56px; padding: 0 36px;
+      border: 1.5px solid transparent;
+      cursor: pointer; white-space: nowrap;
+      transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+      -webkit-user-select: none; user-select: none; line-height: 1;
+    }
+    .btn:focus-visible { outline: 2px solid var(--prim-blue-50); outline-offset: 2px; }
+    .btn-icon-only { padding: 0; width: 56px; }
+
+    /* ── Variants ───────────────────────────────────────────────────── */
+    .btn-brand {
+      position: relative; overflow: hidden;
+      background: var(--btn-brand-background);
+      border-color: var(--btn-brand-border);
+      color: var(--btn-brand-text);
+    }
+    .btn-brand::before {
+      content: ''; position: absolute; inset: 0;
+      border-radius: inherit; pointer-events: none;
+      background: radial-gradient(circle 70px at var(--mouse-x,50%) var(--mouse-y,50%), var(--prim-white-20), transparent 100%);
+      opacity: 0; transition: opacity 0.15s ease;
+    }
+    .btn-brand:hover::before { opacity: 1; }
+    .btn-brand:active::before {
+      background: radial-gradient(circle 50px at var(--mouse-x,50%) var(--mouse-y,50%), var(--prim-white-35), transparent 100%);
+      opacity: 1;
+    }
+    .btn-brand:hover  { background: var(--btn-brand-background-hover);   border-color: var(--btn-brand-border-hover);   color: var(--btn-brand-text-hover); }
+    .btn-brand:active { background: var(--btn-brand-background-pressed); border-color: var(--btn-brand-border-pressed); color: var(--btn-brand-text-pressed); }
+
+    .btn-prime-primary {
+      background: var(--btn-prime-primary-background); border-color: var(--btn-prime-primary-border); color: var(--btn-prime-primary-text);
+    }
+    .btn-prime-primary:hover  { background: var(--btn-prime-primary-background-hover);   border-color: var(--btn-prime-primary-border-hover);   color: var(--btn-prime-primary-text-hover); }
+    .btn-prime-primary:active { background: var(--btn-prime-primary-background-pressed); border-color: var(--btn-prime-primary-border-pressed); color: var(--btn-prime-primary-text-pressed); }
+
+    .btn-prime-secondary {
+      background: var(--btn-prime-secondary-background); border-color: var(--btn-prime-secondary-border); color: var(--btn-prime-secondary-text);
+    }
+    .btn-prime-secondary:hover  { background: var(--btn-prime-secondary-background-hover);   border-color: var(--btn-prime-secondary-border-hover);   color: var(--btn-prime-secondary-text-hover); }
+    .btn-prime-secondary:active { background: var(--btn-prime-secondary-background-pressed); border-color: var(--btn-prime-secondary-border-pressed); color: var(--btn-prime-secondary-text-pressed); }
+
+    .btn-prime-tertiary {
+      background: var(--btn-prime-tertiary-background); border-color: var(--btn-prime-tertiary-border); color: var(--btn-prime-tertiary-text);
+    }
+    .btn-prime-tertiary:hover  { background: var(--btn-prime-tertiary-background-hover);   border-color: var(--btn-prime-tertiary-border-hover);   color: var(--btn-prime-tertiary-text-hover); }
+    .btn-prime-tertiary:active { background: var(--btn-prime-tertiary-background-pressed); border-color: var(--btn-prime-tertiary-border-pressed); color: var(--btn-prime-tertiary-text-pressed); }
+
+    .btn-dest-primary {
+      background: var(--btn-dest-primary-background); border-color: var(--btn-dest-primary-border); color: var(--btn-dest-primary-text);
+    }
+    .btn-dest-primary:hover  { background: var(--btn-dest-primary-background-hover);   border-color: var(--btn-dest-primary-border-hover);   color: var(--btn-dest-primary-text-hover); }
+    .btn-dest-primary:active { background: var(--btn-dest-primary-background-pressed); border-color: var(--btn-dest-primary-border-pressed); color: var(--btn-dest-primary-text-pressed); }
+
+    .btn-dest-secondary {
+      background: var(--btn-dest-secondary-background); border-color: var(--btn-dest-secondary-border); color: var(--btn-dest-secondary-text);
+    }
+    .btn-dest-secondary:hover  { background: var(--btn-dest-secondary-background-hover);   border-color: var(--btn-dest-secondary-border-hover);   color: var(--btn-dest-secondary-text-hover); }
+    .btn-dest-secondary:active { background: var(--btn-dest-secondary-background-pressed); border-color: var(--btn-dest-secondary-border-pressed); color: var(--btn-dest-secondary-text-pressed); }
+
+    .btn-dest-tertiary {
+      background: var(--btn-dest-tertiary-background); border-color: var(--btn-dest-tertiary-border); color: var(--btn-dest-tertiary-text);
+    }
+    .btn-dest-tertiary:hover  { background: var(--btn-dest-tertiary-background-hover);   border-color: var(--btn-dest-tertiary-border-hover);   color: var(--btn-dest-tertiary-text-hover); }
+    .btn-dest-tertiary:active { background: var(--btn-dest-tertiary-background-pressed); border-color: var(--btn-dest-tertiary-border-pressed); color: var(--btn-dest-tertiary-text-pressed); }
+
+    .btn-icon {
+      background: var(--btn-icon-background); border-color: var(--btn-icon-border); color: var(--btn-icon-icon, var(--btn-icon-color));
+    }
+    .btn-icon:hover  { background: var(--btn-icon-background-hover);   border-color: var(--btn-icon-border-hover); }
+    .btn-icon:active { background: var(--btn-icon-background-pressed); border-color: var(--btn-icon-border-pressed); }
+
+    @keyframes btn-spin { to { transform: rotate(360deg); } }
+    .btn-spinner {
+      display: inline-block;
+      width: 13px; height: 13px;
+      border: 1.5px solid var(--btn-loading-icon-inactive);
+      border-top-color: var(--btn-loading-icon-active);
+      border-radius: 50%;
+      animation: btn-spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-left: 5px;
+      flex-shrink: 0;
+    }
+    .btn-loading {
+      background: var(--btn-loading-background); border-color: var(--btn-loading-border);
+      color: var(--btn-loading-icon-active);
+      cursor: wait; pointer-events: none;
+    }
+    .btn-disabled {
+      background: var(--btn-disabled-background); border-color: var(--btn-disabled-border); color: var(--btn-disabled-text);
+      cursor: not-allowed; pointer-events: none;
+    }
+  </style>
+  <!-- Pre-built token CSS (run: node generate-tokens.js). Overrides hardcoded fallbacks above. -->
+  <link rel="stylesheet" href="../../Resource/tokens.css" id="tokens-css-link">
+  <!-- Runtime token overrides — only populated when tokens.css is absent -->
+  <style id="token-styles"></style>
+</head>
+<body>
+
+  <div class="content">
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>Button Colors</h1>
+      <p>Hover and click buttons to see interaction states · Change tokens to update live</p>
+    </div>
+    <div class="mode-control" id="modeControl">
+      <button class="mode-btn active" data-theme-val="light">Light</button>
+      <button class="mode-btn" data-theme-val="dark">Dark</button>
+      <button class="mode-btn" data-theme-val="dynamic">Dynamic</button>
+    </div>
+  </div>
+
+  <!-- Token Playground -->
+  <div class="playground">
+    <div class="playground-header">
+      <div class="playground-header-text">
+        <h2>Token Playground</h2>
+        <p>Each column shows a button variant on its matching surface · Tokens per state in left column</p>
+      </div>
+      <button class="shuffle-btn" id="shuffleBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="4"/>
+          <circle cx="8.5" cy="8.5" r="1.2" fill="currentColor" stroke="none"/>
+          <circle cx="15.5" cy="8.5" r="1.2" fill="currentColor" stroke="none"/>
+          <circle cx="12" cy="12" r="1.2" fill="currentColor" stroke="none"/>
+          <circle cx="8.5" cy="15.5" r="1.2" fill="currentColor" stroke="none"/>
+          <circle cx="15.5" cy="15.5" r="1.2" fill="currentColor" stroke="none"/>
+        </svg>
+        Shuffle
+      </button>
+    </div>
+
+    <!-- Column headers -->
+    <div class="pg-col-header">
+      <div></div>
+      <div class="pg-ch-surface">Primary</div>
+      <div class="pg-ch-surface">Secondary</div>
+      <div class="pg-ch-surface">Tertiary</div>
+      <div></div>
+    </div>
+
+    <div id="playgroundRows"></div>
+  </div>
+  </div><!-- /.content -->
+
+  <script>
+    /* ══════════════════════════════════════════════════════════════════
+       TOKEN LOADER — reads Primitive.json + Semantic/{Light,Dark,Dynamic}.json
+       and injects live CSS variables into #token-styles, overriding the
+       hardcoded fallback values in the main <style> block.
+       Requires serving via HTTP (file:// fetch is blocked by browsers).
+       ══════════════════════════════════════════════════════════════════ */
+    const TOKEN_BASE = '../../Resource/';
+
+    /* primitive name "Blue 50" → "--prim-blue-50" */
+    function primNameToVar(name) {
+      return '--prim-' + name.trim().toLowerCase().replace(/\s+/g, '-');
+    }
+
+    /* extract CSS value from a JSON token entry */
+    function tokenEntryToValue(entry) {
+      const { components: [r, g, b], alpha } = entry.$value;
+      if (alpha >= 0.9999) return entry.$value.hex;
+      return `rgba(${Math.round(r*255)},${Math.round(g*255)},${Math.round(b*255)},${parseFloat(alpha.toFixed(4))})`;
+    }
+
+    /* semantic path ["Button","Brand","Background Hover"] → "--btn-brand-background-hover" */
+    const PATH_ABBREVS = { button: 'btn', destructive: 'dest' };
+    function pathToVar(path) {
+      return '--' + path.map(s => {
+        const k = s.trim().toLowerCase().replace(/\s+/g, '-');
+        return PATH_ABBREVS[k] || k;
+      }).join('-');
+    }
+
+    /* recursively collect semantic vars from a theme JSON object */
+    function collectSemanticVars(obj, path, out) {
+      if (!obj || typeof obj !== 'object') return;
+      if (obj.$type === 'color') {
+        const cssVar = pathToVar(path);
+        const alias  = obj.$extensions?.['com.figma.aliasData'];
+        out.push(alias
+          ? `  ${cssVar}: var(${primNameToVar(alias.targetVariableName)});\n`
+          : `  ${cssVar}: ${tokenEntryToValue(obj)};\n`
+        );
+        return;
+      }
+      for (const [k, v] of Object.entries(obj)) {
+        if (!k.startsWith('$')) collectSemanticVars(v, [...path, k], out);
+      }
+    }
+
+    /* build PALETTES from loaded Primitive.json data */
+    function buildPalettesFromPrimitive(primData) {
+      function e(name) {
+        const entry = primData[name.trim()];
+        return {
+          name:    name.trim(),
+          primVar: primNameToVar(name),
+          hex:     entry ? tokenEntryToValue(entry) : '#888',
+        };
+      }
+      PALETTES.blue        = ['Blue 0','Blue 5','Blue 10','Blue 20','Blue 30','Blue 40','Blue 50','Blue 60','Blue 70','Blue 80','Blue 90','Blue 95','Blue 100'].map(e);
+      PALETTES.neutral     = ['White 100','Neutral 0','Neutral 5','Neutral 10','Neutral 20','Neutral 30','Neutral 40','Neutral 50','Neutral 60','Neutral 70','Neutral 80','Neutral 90','Neutral 95','Neutral 100'].map(e);
+      PALETTES.red         = ['Red 0','Red 5','Red 10','Red 20','Red 30','Red 40','Red 50','Red 60','Red 70','Red 80','Red 90','Red 95','Red 100'].map(e);
+      PALETTES.white_alpha = ['White 0','White 5','White 10','White 15','White 20','White 25','White 30','White 35','White 40','White 45','White 50','White 55','White 60','White 65','White 70','White 75','White 80','White 85','White 90','White 95','White 100'].map(e);
+      PALETTES.black_alpha = ['Black 0','Black 5','Black 10','Black 15','Black 20','Black 25','Black 30','Black 35','Black 40','Black 45','Black 50','Black 55','Black 60','Black 65','Black 70','Black 75','Black 80','Black 85','Black 90','Black 95','Black 100'].map(e);
+    }
+
+    async function loadDesignTokens() {
+      /* Fast path: tokens.css was pre-built and already linked in <head>.
+         Detect via the sentinel variable it sets. */
+      const sentinel = getComputedStyle(document.documentElement)
+                         .getPropertyValue('--tokens-css-loaded').trim();
+      if (sentinel === '1') {
+        console.info('[Tokens] tokens.css detected — skipping JSON fetch. Instant load ✓');
+        /* Still fetch Primitive.json to keep PALETTES (picker swatches) accurate */
+        if (location.protocol !== 'file:') {
+          try {
+            const primData = await fetch(TOKEN_BASE + 'Primitive.json').then(r => r.json());
+            buildPalettesFromPrimitive(primData);
+          } catch (_) { /* use hardcoded palettes */ }
+        }
+        return true;
+      }
+
+      /* Fallback: tokens.css not found — generate CSS at runtime from JSON */
+      if (location.protocol === 'file:') {
+        console.warn('[Tokens] Served from file:// — token loading disabled.\n  Run: node generate-tokens.js  (then reload)\n  Hardcoded fallback tokens active.');
+        return false;
+      }
+      try {
+        const [primData, lightData, darkData, dynData] = await Promise.all([
+          fetch(TOKEN_BASE + 'Primitive.json').then(r => r.json()),
+          fetch(TOKEN_BASE + 'Semantic/Light.json').then(r => r.json()),
+          fetch(TOKEN_BASE + 'Semantic/Dark.json').then(r => r.json()),
+          fetch(TOKEN_BASE + 'Semantic/Dynamic.json').then(r => r.json()),
+        ]);
+
+        let css = ':root {\n';
+        for (const [name, entry] of Object.entries(primData)) {
+          if (name.startsWith('$') || !entry.$type) continue;
+          css += `  ${primNameToVar(name)}: ${tokenEntryToValue(entry)};\n`;
+        }
+        css += '}\n';
+        const themes = [
+          [':root',                  lightData],
+          ['[data-theme="dark"]',    darkData],
+          ['[data-theme="dynamic"]', dynData],
+        ];
+        for (const [selector, data] of themes) {
+          const vars = [];
+          collectSemanticVars(data, [], vars);
+          if (vars.length) css += `${selector} {\n${vars.join('')}}\n`;
+        }
+        document.getElementById('token-styles').textContent = css;
+        buildPalettesFromPrimitive(primData);
+        console.info(`[Tokens] Loaded ${Object.keys(primData).filter(k=>!k.startsWith('$')).length} primitives from JSON (runtime fallback).`);
+        return true;
+      } catch (err) {
+        console.warn('[Tokens] Failed to load token JSON files:', err.message);
+        return false;
+      }
+    }
+
+    /* ── Palette definitions (hardcoded fallback — overridden by loadDesignTokens) ── */
+    let PALETTES = {
+      blue: [
+        { name: 'Blue 0',   primVar: '--prim-blue-0',   hex: '#EBF2FF' },
+        { name: 'Blue 5',   primVar: '--prim-blue-5',   hex: '#DFE9FA' },
+        { name: 'Blue 10',  primVar: '--prim-blue-10',  hex: '#C2D5F8' },
+        { name: 'Blue 20',  primVar: '--prim-blue-20',  hex: '#88B0F7' },
+        { name: 'Blue 30',  primVar: '--prim-blue-30',  hex: '#5591FA' },
+        { name: 'Blue 40',  primVar: '--prim-blue-40',  hex: '#2E76FB' },
+        { name: 'Blue 50',  primVar: '--prim-blue-50',  hex: '#0B5EF5' },
+        { name: 'Blue 60',  primVar: '--prim-blue-60',  hex: '#004ACE' },
+        { name: 'Blue 70',  primVar: '--prim-blue-70',  hex: '#0036B5' },
+        { name: 'Blue 80',  primVar: '--prim-blue-80',  hex: '#04289E' },
+        { name: 'Blue 90',  primVar: '--prim-blue-90',  hex: '#0C1F7F' },
+        { name: 'Blue 95',  primVar: '--prim-blue-95',  hex: '#1A295A' },
+        { name: 'Blue 100', primVar: '--prim-blue-100', hex: '#1A253B' },
+      ],
+      neutral: [
+        { name: 'White 100',   primVar: '--prim-white-100',   hex: '#FFFFFF' },
+        { name: 'Neutral 0',   primVar: '--prim-neutral-0',   hex: '#F5F5F7' },
+        { name: 'Neutral 5',   primVar: '--prim-neutral-5',   hex: '#F2F2F5' },
+        { name: 'Neutral 10',  primVar: '--prim-neutral-10',  hex: '#E2E2E9' },
+        { name: 'Neutral 20',  primVar: '--prim-neutral-20',  hex: '#C8C8D0' },
+        { name: 'Neutral 30',  primVar: '--prim-neutral-30',  hex: '#ACACB9' },
+        { name: 'Neutral 40',  primVar: '--prim-neutral-40',  hex: '#9191A1' },
+        { name: 'Neutral 50',  primVar: '--prim-neutral-50',  hex: '#787887' },
+        { name: 'Neutral 60',  primVar: '--prim-neutral-60',  hex: '#5F5F6C' },
+        { name: 'Neutral 70',  primVar: '--prim-neutral-70',  hex: '#484853' },
+        { name: 'Neutral 80',  primVar: '--prim-neutral-80',  hex: '#3B3B47' },
+        { name: 'Neutral 90',  primVar: '--prim-neutral-90',  hex: '#2E2E38' },
+        { name: 'Neutral 95',  primVar: '--prim-neutral-95',  hex: '#1A1A20' },
+        { name: 'Neutral 100', primVar: '--prim-neutral-100', hex: '#0B0B0D' },
+      ],
+      red: [
+        { name: 'White 0', primVar: '--prim-white-0', hex: 'rgba(255,255,255,0)' },
+        { name: 'Red 0',   primVar: '--prim-red-0',   hex: '#FFF2F0' },
+        { name: 'Red 5',   primVar: '--prim-red-5',   hex: '#FFDFDB' },
+        { name: 'Red 10',  primVar: '--prim-red-10',  hex: '#FFC4BF' },
+        { name: 'Red 20',  primVar: '--prim-red-20',  hex: '#FF9E96' },
+        { name: 'Red 30',  primVar: '--prim-red-30',  hex: '#FF776B' },
+        { name: 'Red 40',  primVar: '--prim-red-40',  hex: '#FE5443' },
+        { name: 'Red 50',  primVar: '--prim-red-50',  hex: '#E62717' },
+        { name: 'Red 60',  primVar: '--prim-red-60',  hex: '#CC1808' },
+        { name: 'Red 70',  primVar: '--prim-red-70',  hex: '#AD180B' },
+        { name: 'Red 80',  primVar: '--prim-red-80',  hex: '#8F170C' },
+        { name: 'Red 95',  primVar: '--prim-red-95',  hex: '#48140F' },
+        { name: 'Red 100', primVar: '--prim-red-100', hex: '#311A1A' },
+      ],
+      /* White-alpha palette (for Prime Primary & Tertiary in Dynamic mode) */
+      white_alpha: [
+        { name: 'White 0',   primVar: '--prim-white-0',   hex: 'rgba(255,255,255,0)'    },
+        { name: 'White 5',   primVar: '--prim-white-5',   hex: 'rgba(255,255,255,0.05)' },
+        { name: 'White 10',  primVar: '--prim-white-10',  hex: 'rgba(255,255,255,0.1)'  },
+        { name: 'White 15',  primVar: '--prim-white-15',  hex: 'rgba(255,255,255,0.15)' },
+        { name: 'White 20',  primVar: '--prim-white-20',  hex: 'rgba(255,255,255,0.2)'  },
+        { name: 'White 25',  primVar: '--prim-white-25',  hex: 'rgba(255,255,255,0.25)' },
+        { name: 'White 30',  primVar: '--prim-white-30',  hex: 'rgba(255,255,255,0.3)'  },
+        { name: 'White 35',  primVar: '--prim-white-35',  hex: 'rgba(255,255,255,0.35)' },
+        { name: 'White 40',  primVar: '--prim-white-40',  hex: 'rgba(255,255,255,0.4)'  },
+        { name: 'White 45',  primVar: '--prim-white-45',  hex: 'rgba(255,255,255,0.45)' },
+        { name: 'White 50',  primVar: '--prim-white-50',  hex: 'rgba(255,255,255,0.5)'  },
+        { name: 'White 55',  primVar: '--prim-white-55',  hex: 'rgba(255,255,255,0.55)' },
+        { name: 'White 60',  primVar: '--prim-white-60',  hex: 'rgba(255,255,255,0.6)'  },
+        { name: 'White 65',  primVar: '--prim-white-65',  hex: 'rgba(255,255,255,0.65)' },
+        { name: 'White 70',  primVar: '--prim-white-70',  hex: 'rgba(255,255,255,0.7)'  },
+        { name: 'White 75',  primVar: '--prim-white-75',  hex: 'rgba(255,255,255,0.75)' },
+        { name: 'White 80',  primVar: '--prim-white-80',  hex: 'rgba(255,255,255,0.8)'  },
+        { name: 'White 85',  primVar: '--prim-white-85',  hex: 'rgba(255,255,255,0.85)' },
+        { name: 'White 90',  primVar: '--prim-white-90',  hex: 'rgba(255,255,255,0.9)'  },
+        { name: 'White 95',  primVar: '--prim-white-95',  hex: 'rgba(255,255,255,0.95)' },
+        { name: 'White 100', primVar: '--prim-white-100', hex: '#FFFFFF'                 },
+      ],
+      black_alpha: [
+        { name: 'Black 0',   primVar: '--prim-black-0',   hex: 'rgba(3,3,29,0)'      },
+        { name: 'Black 5',   primVar: '--prim-black-5',   hex: 'rgba(3,3,29,0.05)'   },
+        { name: 'Black 10',  primVar: '--prim-black-10',  hex: 'rgba(3,3,29,0.09)'   },
+        { name: 'Black 15',  primVar: '--prim-black-15',  hex: 'rgba(4,3,28,0.15)'   },
+        { name: 'Black 20',  primVar: '--prim-black-20',  hex: 'rgba(5,4,27,0.2)'    },
+        { name: 'Black 25',  primVar: '--prim-black-25',  hex: 'rgba(6,5,26,0.25)'   },
+        { name: 'Black 30',  primVar: '--prim-black-30',  hex: 'rgba(7,6,24,0.3)'    },
+        { name: 'Black 35',  primVar: '--prim-black-35',  hex: 'rgba(8,7,22,0.35)'   },
+        { name: 'Black 40',  primVar: '--prim-black-40',  hex: 'rgba(9,8,21,0.4)'    },
+        { name: 'Black 45',  primVar: '--prim-black-45',  hex: 'rgba(10,9,20,0.45)'  },
+        { name: 'Black 50',  primVar: '--prim-black-50',  hex: 'rgba(11,10,19,0.5)'  },
+        { name: 'Black 55',  primVar: '--prim-black-55',  hex: 'rgba(12,11,18,0.55)' },
+        { name: 'Black 60',  primVar: '--prim-black-60',  hex: 'rgba(13,12,17,0.6)'  },
+        { name: 'Black 65',  primVar: '--prim-black-65',  hex: 'rgba(14,13,16,0.65)' },
+        { name: 'Black 70',  primVar: '--prim-black-70',  hex: 'rgba(15,14,16,0.7)'  },
+        { name: 'Black 75',  primVar: '--prim-black-75',  hex: 'rgba(16,16,16,0.75)' },
+        { name: 'Black 80',  primVar: '--prim-black-80',  hex: 'rgba(16,16,16,0.8)'  },
+        { name: 'Black 85',  primVar: '--prim-black-85',  hex: 'rgba(16,16,16,0.85)' },
+        { name: 'Black 90',  primVar: '--prim-black-90',  hex: 'rgba(16,16,16,0.9)'  },
+        { name: 'Black 95',  primVar: '--prim-black-95',  hex: 'rgba(16,16,16,0.95)' },
+        { name: 'Black 100', primVar: '--prim-black-100', hex: '#101010'               },
+      ],
+    };
+
+    /* ── Button groups ──────────────────────────────────────────────── */
+    // Each group is one row. Cells map to Primary/Secondary/Tertiary columns.
+    // showPickers:true cells render state pickers; false cells show the button preview only.
+    const BUTTON_GROUPS = [
+      /* ── Brand ──────────────────────────────────────────────────────── */
+      {
+        label: 'Brand',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-brand', showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-brand-background',         palette: 'blue', defaults: { light: '--prim-blue-50', dark: '--prim-blue-50', dynamic: '--prim-blue-50' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-brand-background-hover',   palette: 'blue', defaults: { light: '--prim-blue-50', dark: '--prim-blue-50', dynamic: '--prim-blue-50' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-brand-background-pressed', palette: 'blue', defaults: { light: '--prim-blue-40', dark: '--prim-blue-40', dynamic: '--prim-blue-40' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-brand', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-brand', showPickers: false, stateGroups: [] },
+        ],
+      },
+
+      /* ── Prime ───────────────────────────────────────────────────────── */
+      {
+        sectionLabel: 'Prime',
+        label: 'Primary',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-prime-primary', showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-prime-primary-background',         palette: 'neutral', palette_dynamic: 'white_alpha', defaults: { light: '--prim-neutral-100', dark: '--prim-white-100', dynamic: '--prim-white-100' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-prime-primary-background-hover',   palette: 'neutral', palette_dynamic: 'white_alpha', defaults: { light: '--prim-neutral-95',  dark: '--prim-neutral-5',  dynamic: '--prim-white-95'  } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-prime-primary-background-pressed', palette: 'neutral', palette_dynamic: 'white_alpha', defaults: { light: '--prim-neutral-90',  dark: '--prim-neutral-10', dynamic: '--prim-white-90'  } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-prime-primary', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-prime-primary', showPickers: false, stateGroups: [] },
+        ],
+      },
+      {
+        label: 'Secondary',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-prime-secondary', showPickers: true, stateGroups: [
+            { pickers: [
+              { label: 'Background', cssVar: '--btn-prime-secondary-background',         palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-5',  dark: '--prim-neutral-90', dynamic: '--prim-black-15' } },
+              { label: 'Border',     cssVar: '--btn-prime-secondary-border',             palette: 'black_alpha', palette_dynamic: 'white_alpha', defaults: { light: '--prim-black-0', dark: '--prim-white-0', dynamic: '--prim-white-10' } },
+            ]},
+            { pickers: [
+              { label: 'Background', cssVar: '--btn-prime-secondary-background-hover',   palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-10', dark: '--prim-neutral-80', dynamic: '--prim-black-20' } },
+              { label: 'Border',     cssVar: '--btn-prime-secondary-border-hover',       palette: 'black_alpha', palette_dynamic: 'white_alpha', defaults: { light: '--prim-black-0', dark: '--prim-white-0', dynamic: '--prim-white-10' } },
+            ]},
+            { pickers: [
+              { label: 'Background', cssVar: '--btn-prime-secondary-background-pressed', palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-20', dark: '--prim-neutral-70', dynamic: '--prim-black-25' } },
+              { label: 'Border',     cssVar: '--btn-prime-secondary-border-pressed',     palette: 'black_alpha', palette_dynamic: 'white_alpha', defaults: { light: '--prim-black-0', dark: '--prim-white-0', dynamic: '--prim-white-10' } },
+            ]},
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-prime-secondary', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-prime-secondary', showPickers: false, stateGroups: [] },
+        ],
+      },
+      {
+        label: 'Tertiary',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-prime-tertiary', showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Border', cssVar: '--btn-prime-tertiary-border',         palette: 'neutral', palette_dynamic: 'white_alpha', defaults: { light: '--prim-neutral-10', dark: '--prim-neutral-80', dynamic: '--prim-white-30' } }] },
+            { pickers: [{ label: 'Border', cssVar: '--btn-prime-tertiary-border-hover',   palette: 'neutral', palette_dynamic: 'white_alpha', defaults: { light: '--prim-neutral-50', dark: '--prim-neutral-40', dynamic: '--prim-white-70' } }] },
+            { pickers: [{ label: 'Border', cssVar: '--btn-prime-tertiary-border-pressed', palette: 'neutral', palette_dynamic: 'white_alpha', defaults: { light: '--prim-neutral-80', dark: '--prim-neutral-20', dynamic: '--prim-white-80' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-prime-tertiary', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-prime-tertiary', showPickers: false, stateGroups: [] },
+        ],
+      },
+
+      /* ── Destructive ─────────────────────────────────────────────────── */
+      {
+        sectionLabel: 'Destructive',
+        label: 'Primary',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-dest-primary', showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-dest-primary-background',         palette: 'red', defaults: { light: '--prim-red-60', dark: '--prim-red-60', dynamic: '--prim-red-60' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-dest-primary-background-hover',   palette: 'red', defaults: { light: '--prim-red-70', dark: '--prim-red-70', dynamic: '--prim-red-70' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-dest-primary-background-pressed', palette: 'red', defaults: { light: '--prim-red-80', dark: '--prim-red-80', dynamic: '--prim-red-80' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-dest-primary', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-dest-primary', showPickers: false, stateGroups: [] },
+        ],
+      },
+      {
+        label: 'Secondary',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-dest-secondary', showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Border', cssVar: '--btn-dest-secondary-border',         palette: 'red', defaults: { light: '--prim-red-50', dark: '--prim-red-20', dynamic: '--prim-red-20' } }] },
+            { pickers: [{ label: 'Border', cssVar: '--btn-dest-secondary-border-hover',   palette: 'red', defaults: { light: '--prim-red-60', dark: '--prim-red-30', dynamic: '--prim-red-40' } }] },
+            { pickers: [{ label: 'Border', cssVar: '--btn-dest-secondary-border-pressed', palette: 'red', defaults: { light: '--prim-red-70', dark: '--prim-red-40', dynamic: '--prim-red-60' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-dest-secondary', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-dest-secondary', showPickers: false, stateGroups: [] },
+        ],
+      },
+      {
+        label: 'Tertiary',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-dest-tertiary', showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-dest-tertiary-background',         palette: 'red', palette_dynamic: 'black_alpha', defaults: { light: '--prim-white-0',  dark: '--prim-white-0',  dynamic: '--prim-black-0'  } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-dest-tertiary-background-hover',   palette: 'red', palette_dynamic: 'black_alpha', defaults: { light: '--prim-red-5',    dark: '--prim-red-100',  dynamic: '--prim-black-15' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-dest-tertiary-background-pressed', palette: 'red', palette_dynamic: 'black_alpha', defaults: { light: '--prim-red-10',   dark: '--prim-red-95',   dynamic: '--prim-black-20' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-dest-tertiary', showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-dest-tertiary', showPickers: false, stateGroups: [] },
+        ],
+      },
+
+      /* ── Utility ─────────────────────────────────────────────────────── */
+      {
+        sectionLabel: 'Utility',
+        label: 'Icon',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-icon btn-icon-only', isIcon: true, showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-icon-background',         palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-10', dark: '--prim-neutral-80', dynamic: '--prim-black-15' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-icon-background-hover',   palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-20', dark: '--prim-neutral-70', dynamic: '--prim-black-20' } }] },
+            { pickers: [{ label: 'Background', cssVar: '--btn-icon-background-pressed', palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-30', dark: '--prim-neutral-60', dynamic: '--prim-black-25' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-icon btn-icon-only', isIcon: true, showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-icon btn-icon-only', isIcon: true, showPickers: false, stateGroups: [] },
+        ],
+      },
+      {
+        label: 'Loading',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-loading', isLoading: true, showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-loading-background', palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-20', dark: '--prim-neutral-70', dynamic: '--prim-black-10' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-loading', isLoading: true, showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-loading', isLoading: true, showPickers: false, stateGroups: [] },
+        ],
+      },
+      {
+        label: 'Disabled',
+        cells: [
+          { surface: 'sp', buttonClass: 'btn btn-disabled', isDisabled: true, showPickers: true, stateGroups: [
+            { pickers: [{ label: 'Background', cssVar: '--btn-disabled-background', palette: 'neutral', palette_dynamic: 'black_alpha', defaults: { light: '--prim-neutral-20', dark: '--prim-neutral-70', dynamic: '--prim-black-15' } }] },
+          ]},
+          { surface: 'ss', buttonClass: 'btn btn-disabled', isDisabled: true, showPickers: false, stateGroups: [] },
+          { surface: 'st', buttonClass: 'btn btn-disabled', isDisabled: true, showPickers: false, stateGroups: [] },
+        ],
+      },
+    ];
+
+    /* ── Helpers ────────────────────────────────────────────────────── */
+    const currentSelections = {};
+
+    function getTheme() { return document.documentElement.getAttribute('data-theme') || 'light'; }
+    function getDefaultVar(picker) { return picker.defaults[getTheme()]; }
+
+    function resolveHex(primVar) {
+      for (const entries of Object.values(PALETTES)) {
+        const found = entries.find(e => e.primVar === primVar);
+        if (found) {
+          /* Static token: use precomputed hex */
+          if (found.hex) return found.hex;
+          /* Dynamic token: read live computed value */
+          return getComputedStyle(document.documentElement).getPropertyValue(primVar).trim() || '#888';
+        }
+      }
+      return '#888';
+    }
+    function resolveName(primVar) {
+      for (const entries of Object.values(PALETTES)) {
+        const found = entries.find(e => e.primVar === primVar);
+        if (found) return found.name;
+      }
+      return primVar;
+    }
+    function applySelection(cssVar, primVar) {
+      currentSelections[cssVar] = primVar;
+      document.documentElement.style.setProperty(cssVar, `var(${primVar})`);
+    }
+
+    /* ── Build a single picker element ──────────────────────────────── */
+    function buildPickerEl(pickerCfg, groupConfig, rowEl) {
+      const defaultPrimVar = getDefaultVar(pickerCfg);
+      const currentPrimVar = currentSelections[pickerCfg.cssVar] || defaultPrimVar;
+      const isModified = currentPrimVar !== defaultPrimVar;
+      const hex = resolveHex(currentPrimVar);
+      const isTransp = hex === 'transparent' || /,\s*0\s*\)$/.test(hex);
+      const paletteName = (getTheme() === 'dynamic' && pickerCfg.palette_dynamic)
+        ? pickerCfg.palette_dynamic
+        : pickerCfg.palette;
+      const palette = PALETTES[paletteName];
+
+      const pickerEl = document.createElement('div');
+      pickerEl.className = 'picker' + (isModified ? ' modified' : '');
+
+      const trigger = document.createElement('div');
+      trigger.className = 'picker-trigger';
+      trigger.innerHTML = `
+        <span class="picker-swatch${isTransp ? ' is-transparent' : ''}" style="background:${hex}"></span>
+        <span class="picker-label-group">
+          <span class="picker-prop">${pickerCfg.label}</span>
+          <span class="picker-name">${resolveName(currentPrimVar)}</span>
+        </span>
+        <svg class="picker-chevron" width="8" height="8" viewBox="0 0 8 8" fill="none">
+          <path d="M1.5 3L4 5.5L6.5 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>`;
+
+      const dropdown = document.createElement('div');
+      dropdown.className = 'picker-dropdown';
+
+      palette.forEach(option => {
+        const isSelected = option.primVar === currentPrimVar;
+        const isDefault  = option.primVar === defaultPrimVar;
+        const opt = document.createElement('div');
+        opt.className = 'picker-option' + (isSelected ? ' selected' : '');
+        opt.innerHTML = `
+          <span class="opt-swatch${/,\s*0\s*\)$/.test(option.hex || '') ? ' is-transparent' : ''}" style="background:${option.hex}"></span>
+          <span class="opt-name">${option.name}</span>
+          ${isDefault ? '<span class="opt-default-tag">Default</span>' : ''}`;
+        opt.addEventListener('click', e => {
+          e.stopPropagation();
+          applySelection(pickerCfg.cssVar, option.primVar);
+          pickerEl.classList.remove('open');
+          renderGroup(groupConfig, rowEl);
+        });
+        dropdown.appendChild(opt);
+      });
+
+      pickerEl.appendChild(trigger);
+      pickerEl.appendChild(dropdown);
+      trigger.addEventListener('click', e => {
+        e.stopPropagation();
+        const isOpen = pickerEl.classList.contains('open');
+        document.querySelectorAll('.picker.open').forEach(p => p.classList.remove('open'));
+        if (!isOpen) pickerEl.classList.add('open');
+      });
+      return pickerEl;
+    }
+
+    /* ── Render all pickers for a group (populates state-row cells) ──── */
+    function renderGroup(groupConfig, groupEl) {
+      const stateRows = groupEl.querySelectorAll('.pg-row-state');
+      const resetBtn  = groupEl.querySelector('.pg-reset');
+      let anyModified = false;
+
+      groupConfig.cells.forEach((cell, cellIdx) => {
+        if (!cell.showPickers) return;
+
+        cell.stateGroups.forEach((stateGroup, stateIdx) => {
+          const stateRow = stateRows[stateIdx];
+          if (!stateRow) return;
+
+          const cellEls = stateRow.querySelectorAll('.variant-cell');
+          const cellEl  = cellEls[cellIdx];
+          if (!cellEl) return;
+
+          const pickerArea = cellEl.querySelector('.vc-pickers');
+          if (!pickerArea) return;
+          pickerArea.innerHTML = '';
+
+          stateGroup.pickers.forEach(pickerCfg => {
+            const def = getDefaultVar(pickerCfg);
+            const cur = currentSelections[pickerCfg.cssVar] || def;
+            if (cur !== def) anyModified = true;
+            pickerArea.appendChild(buildPickerEl(pickerCfg, groupConfig, groupEl));
+          });
+        });
+      });
+
+      resetBtn.classList.toggle('active', anyModified);
+      resetBtn.disabled = !anyModified;
+    }
+
+    /* ── Reset all pickers in a group ───────────────────────────────── */
+    function resetGroup(groupConfig, groupEl) {
+      groupConfig.cells.forEach(cell =>
+        cell.stateGroups.forEach(sg =>
+          sg.pickers.forEach(p => applySelection(p.cssVar, getDefaultVar(p)))
+        )
+      );
+      renderGroup(groupConfig, groupEl);
+    }
+
+    /* ── Build the playground ───────────────────────────────────────── */
+    function buildPlayground() {
+      const container = document.getElementById('playgroundRows');
+      container.innerHTML = '';
+
+      const iconSVG    = `<svg width="18" height="18" viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+      const stateNames = ['Default', 'Hover', 'Pressed'];
+
+      BUTTON_GROUPS.forEach(groupConfig => {
+        /* Optional section divider label (e.g. "Prime", "Destructive") */
+        if (groupConfig.sectionLabel) {
+          const secEl = document.createElement('div');
+          secEl.className = 'pg-section-label';
+          secEl.textContent = groupConfig.sectionLabel;
+          container.appendChild(secEl);
+        }
+
+        const groupEl = document.createElement('div');
+        groupEl.className = 'pg-group';
+
+        /* ── Button row ── */
+        const btnRow = document.createElement('div');
+        btnRow.className = 'pg-row pg-row-btns';
+
+        let btnHTML = `<span class="pg-group-label">${groupConfig.label}</span>`;
+        groupConfig.cells.forEach(cell => {
+          let btn;
+          if (cell.isIcon)
+            btn = `<button class="${cell.buttonClass}" aria-label="icon">${iconSVG}</button>`;
+          else if (cell.isLoading)
+            btn = `<button class="${cell.buttonClass}">Button<span class="btn-spinner"></span></button>`;
+          else if (cell.isDisabled)
+            btn = `<button class="${cell.buttonClass}" disabled>Button</button>`;
+          else
+            btn = `<button class="${cell.buttonClass}">Button</button>`;
+          btnHTML += `<div class="variant-cell ${cell.surface}">${btn}</div>`;
+        });
+        btnHTML += `<button class="pg-reset" disabled>Reset</button>`;
+        btnRow.innerHTML = btnHTML;
+
+        btnRow.querySelectorAll('.btn-brand').forEach(btn => {
+          btn.addEventListener('mousemove', e => {
+            const rect = btn.getBoundingClientRect();
+            btn.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            btn.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+          });
+        });
+        btnRow.querySelector('.pg-reset').addEventListener('click', () => resetGroup(groupConfig, groupEl));
+        groupEl.appendChild(btnRow);
+
+        /* ── State rows (Default / Hover / Pressed) ── */
+        const maxStates = Math.max(...groupConfig.cells.map(c => c.stateGroups.length));
+        for (let si = 0; si < maxStates; si++) {
+          const stateRow = document.createElement('div');
+          stateRow.className = 'pg-row pg-row-state';
+
+          let srHTML = `<span class="pg-state-label-cell">${stateNames[si] || ''}</span>`;
+          groupConfig.cells.forEach(cell => {
+            const hasPickersForState = cell.showPickers && cell.stateGroups[si];
+            srHTML += `<div class="variant-cell ${cell.surface}">`;
+            if (hasPickersForState) srHTML += `<div class="vc-pickers"></div>`;
+            srHTML += `</div>`;
+          });
+          srHTML += `<div></div>`;
+          stateRow.innerHTML = srHTML;
+          groupEl.appendChild(stateRow);
+        }
+
+        container.appendChild(groupEl);
+
+        /* Init default selections */
+        groupConfig.cells.forEach(cell =>
+          cell.stateGroups.forEach(sg =>
+            sg.pickers.forEach(p => {
+              if (!currentSelections[p.cssVar]) currentSelections[p.cssVar] = getDefaultVar(p);
+            })
+          )
+        );
+
+        renderGroup(groupConfig, groupEl);
+      });
+    }
+
+    /* ── Close dropdowns on outside click ───────────────────────────── */
+    document.addEventListener('click', () => {
+      document.querySelectorAll('.picker.open').forEach(p => p.classList.remove('open'));
+    });
+
+    /* ── Dynamic palette generator ──────────────────────────────────── */
+    function generateDynamicPalette() {
+      /* One random hue → all three surfaces share it with black-alpha overlays */
+      const hue = Math.floor(Math.random() * 360);
+      document.documentElement.style.setProperty('--prim-dynamic-base', `hsl(${hue}, 75%, 55%)`);
+    }
+
+    /* ── Mode control ───────────────────────────────────────────────── */
+    function resetPickerSelections() {
+      BUTTON_GROUPS.forEach(g => g.cells.forEach(cell => cell.stateGroups.forEach(sg => sg.pickers.forEach(p => {
+        document.documentElement.style.removeProperty(p.cssVar);
+        currentSelections[p.cssVar] = getDefaultVar(p);
+      }))));
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dynamic') {
+        generateDynamicPalette();
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+      document.querySelectorAll('.mode-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.themeVal === theme);
+      });
+      resetPickerSelections();
+      buildPlayground();
+    }
+
+    document.getElementById('modeControl').addEventListener('click', e => {
+      const btn = e.target.closest('.mode-btn');
+      if (btn) setTheme(btn.dataset.themeVal);
+    });
+
+    /* ── Shuffle button ─────────────────────────────────────────────── */
+    document.getElementById('shuffleBtn').addEventListener('click', () => {
+      generateDynamicPalette();
+      buildPlayground();
+    });
+
+    /* ── Bootstrap ──────────────────────────────────────────────────── */
+    (async () => {
+      await loadDesignTokens(); /* injects live token CSS + rebuilds PALETTES */
+      buildPlayground();
+    })();
+  </script>
+</body>
+</html>
