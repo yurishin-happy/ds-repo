@@ -1,0 +1,334 @@
+/*
+  mode-bridge.css
+  ─────────────────────────────────────────────────────────────────────────────
+  Maps mode-prefixed semantic tokens (--light-*, --dark-*, --dynamic-*) to
+  mode-agnostic aliases (--surface-primary, --text-primary, etc.).
+
+  Import AFTER the semantic CSS files:
+    @import './src/Color-primitive.css';
+    @import './src/color-semantic-light.css';
+    @import './src/color-semantic-dark.css';
+    @import './src/color-semantic-dynamic.css';
+    @import './src/mode-bridge.css';   ← last
+
+  Components reference only --surface-primary, --text-primary, etc.
+  The active data-mode on the container resolves which values apply.
+*/
+
+[data-mode="light"] {
+  /* Surface */
+  --surface-primary:              var(--light-surface-primary);
+  --surface-secondary:            var(--light-surface-secondary);
+  --surface-tertiary:             var(--light-surface-tertiary);
+  --surface-brand:                var(--light-surface-brand);
+  --surface-overlay-solid:        var(--light-surface-overlay-solid);
+  --surface-overlay-linear-full:  var(--light-surface-overlay-linear-full);
+  --surface-overlay-linear-half:  var(--light-surface-overlay-linear-half);
+  --surface-status-positive:      var(--light-surface-status-positive);
+  --surface-status-negative:      var(--light-surface-status-negative);
+  --surface-status-warning:       var(--light-surface-status-warning);
+  --surface-status-alert:         var(--light-surface-status-alert);
+  --surface-status-info:          var(--light-surface-status-info);
+
+  /* Text */
+  --text-primary:                 var(--light-text-primary);
+  --text-secondary:               var(--light-text-secondary);
+  --text-tertiary:                var(--light-text-tertiary);
+  --text-status:                  var(--light-text-status);
+  --text-inverse:                 var(--light-text-inverse);
+  --text-disabled:                var(--light-text-disabled);
+  --text-selected:                var(--light-text-selected);
+  --text-unselected:              var(--light-text-unselected);
+  --text-positive:                var(--light-text-positive);
+  --text-negative:                var(--light-text-negative);
+  --text-warning:                 var(--light-text-warning);
+  --text-alert:                   var(--light-text-alert);
+  --text-info:                    var(--light-text-info);
+  --text-link-primary:            var(--light-text-link-primary);
+  --text-link-primary-hover:      var(--light-text-link-primary-hover);
+  --text-link-secondary:          var(--light-text-link-secondary);
+
+  /* Utility */
+  --utility-border:               var(--light-utility-border);
+  --utility-border-hover:         var(--light-utility-border-hover);
+  --utility-disabled:             var(--light-utility-disabled);
+  --utility-ui-background:        var(--light-utility-ui-background);
+  --utility-ui-background-hover:  var(--light-utility-ui-background-hover);
+  --utility-ui-element-active:    var(--light-utility-ui-element-active);
+  --utility-icon-primary:         var(--light-utility-icon-primary);
+  --utility-icon-secondary:       var(--light-utility-icon-secondary);
+  --utility-status-positive:      var(--light-utility-status-positive);
+  --utility-status-negative:      var(--light-utility-status-negative);
+  --utility-status-warning:       var(--light-utility-status-warning);
+  --utility-status-alert:         var(--light-utility-status-alert);
+  --utility-status-info:          var(--light-utility-status-info);
+
+  /* Brand */
+  --brand-primary:                var(--light-brand-primary);
+  --brand-secondary:              var(--light-brand-secondary);
+  --brand-tertiary:               var(--light-brand-tertiary);
+
+  /* Elevation */
+  --elevation-raised:             var(--light-elevation-raised);
+  --elevation-navigation:         var(--light-elevation-navigation);
+  --elevation-modal:              var(--light-elevation-modal);
+
+  /* Button / Prime */
+  --btn-prime-bg:                 var(--light-button-prime-primary-background);
+  --btn-prime-text:               var(--light-button-prime-primary-text);
+  --btn-prime-border:             var(--light-button-prime-primary-border);
+  --btn-prime-bg-hover:           var(--light-button-prime-primary-background-hover);
+  --btn-prime-bg-pressed:         var(--light-button-prime-primary-background-pressed);
+  --btn-sec-bg:                   var(--light-button-prime-secondary-background);
+  --btn-sec-text:                 var(--light-button-prime-secondary-text);
+  --btn-sec-border:               var(--light-button-prime-secondary-border);
+  --btn-ter-bg:                   var(--light-button-prime-tertiary-background);
+  --btn-ter-text:                 var(--light-button-prime-tertiary-text);
+  --btn-ter-border:               var(--light-button-prime-tertiary-border);
+
+  /* Button / Brand */
+  --btn-brand-bg:                 var(--light-button-brand-background);
+  --btn-brand-text:               var(--light-button-brand-text);
+  --btn-brand-border:             var(--light-button-brand-border);
+
+  /* Button / Destructive */
+  --btn-destructive-bg:           var(--light-button-destructive-primary-background);
+  --btn-destructive-text:         var(--light-button-destructive-primary-text);
+
+  /* Button / Disabled */
+  --btn-disabled-bg:              var(--light-button-disabled-background);
+  --btn-disabled-text:            var(--light-button-disabled-text);
+
+  /* Button / Odds */
+  --btn-odds-bg:                  var(--light-button-odds-background);
+  --btn-odds-text:                var(--light-button-odds-text);
+  --btn-odds-border:              var(--light-button-odds-border);
+  --btn-odds-bg-hover:            var(--light-button-odds-background-hover);
+
+  /* Button / Toggle */
+  --btn-toggle-unsel-bg:          var(--light-button-toggle-unselected-background);
+  --btn-toggle-unsel-text:        var(--light-button-toggle-unselected-text);
+  --btn-toggle-unsel-border:      var(--light-button-toggle-unselected-border);
+  --btn-toggle-sel-bg:            var(--light-button-toggle-selected-background);
+  --btn-toggle-sel-text:          var(--light-button-toggle-selected-text);
+
+  /* Button / Icon */
+  --btn-icon-bg:                  var(--light-button-icon-background);
+  --btn-icon-icon:                var(--light-button-icon-icon);
+
+  /* Button / Pinned */
+  --btn-pinned-bg:                var(--light-button-pinned-background);
+  --btn-pinned-text:              var(--light-button-pinned-text);
+}
+
+[data-mode="dark"] {
+  /* Surface */
+  --surface-primary:              var(--dark-surface-primary);
+  --surface-secondary:            var(--dark-surface-secondary);
+  --surface-tertiary:             var(--dark-surface-tertiary);
+  --surface-brand:                var(--dark-surface-brand);
+  --surface-overlay-solid:        var(--dark-surface-overlay-solid);
+  --surface-overlay-linear-full:  var(--dark-surface-overlay-linear-full);
+  --surface-overlay-linear-half:  var(--dark-surface-overlay-linear-half);
+  --surface-status-positive:      var(--dark-surface-status-positive);
+  --surface-status-negative:      var(--dark-surface-status-negative);
+  --surface-status-warning:       var(--dark-surface-status-warning);
+  --surface-status-alert:         var(--dark-surface-status-alert);
+  --surface-status-info:          var(--dark-surface-status-info);
+
+  /* Text */
+  --text-primary:                 var(--dark-text-primary);
+  --text-secondary:               var(--dark-text-secondary);
+  --text-tertiary:                var(--dark-text-tertiary);
+  --text-status:                  var(--dark-text-status);
+  --text-inverse:                 var(--dark-text-inverse);
+  --text-disabled:                var(--dark-text-disabled);
+  --text-selected:                var(--dark-text-selected);
+  --text-unselected:              var(--dark-text-unselected);
+  --text-positive:                var(--dark-text-positive);
+  --text-negative:                var(--dark-text-negative);
+  --text-warning:                 var(--dark-text-warning);
+  --text-alert:                   var(--dark-text-alert);
+  --text-info:                    var(--dark-text-info);
+  --text-link-primary:            var(--dark-text-link-primary);
+  --text-link-primary-hover:      var(--dark-text-link-primary-hover);
+  --text-link-secondary:          var(--dark-text-link-secondary);
+
+  /* Utility */
+  --utility-border:               var(--dark-utility-border);
+  --utility-border-hover:         var(--dark-utility-border-hover);
+  --utility-disabled:             var(--dark-utility-disabled);
+  --utility-ui-background:        var(--dark-utility-ui-background);
+  --utility-ui-background-hover:  var(--dark-utility-ui-background-hover);
+  --utility-ui-element-active:    var(--dark-utility-ui-element-active);
+  --utility-icon-primary:         var(--dark-utility-icon-primary);
+  --utility-icon-secondary:       var(--dark-utility-icon-secondary);
+  --utility-status-positive:      var(--dark-utility-status-positive);
+  --utility-status-negative:      var(--dark-utility-status-negative);
+  --utility-status-warning:       var(--dark-utility-status-warning);
+  --utility-status-alert:         var(--dark-utility-status-alert);
+  --utility-status-info:          var(--dark-utility-status-info);
+
+  /* Brand */
+  --brand-primary:                var(--dark-brand-primary);
+  --brand-secondary:              var(--dark-brand-secondary);
+  --brand-tertiary:               var(--dark-brand-tertiary);
+
+  /* Elevation */
+  --elevation-raised:             var(--dark-elevation-raised);
+  --elevation-navigation:         var(--dark-elevation-navigation);
+  --elevation-modal:              var(--dark-elevation-modal);
+
+  /* Button / Prime */
+  --btn-prime-bg:                 var(--dark-button-prime-primary-background);
+  --btn-prime-text:               var(--dark-button-prime-primary-text);
+  --btn-prime-border:             var(--dark-button-prime-primary-border);
+  --btn-prime-bg-hover:           var(--dark-button-prime-primary-background-hover);
+  --btn-prime-bg-pressed:         var(--dark-button-prime-primary-background-pressed);
+  --btn-sec-bg:                   var(--dark-button-prime-secondary-background);
+  --btn-sec-text:                 var(--dark-button-prime-secondary-text);
+  --btn-sec-border:               var(--dark-button-prime-secondary-border);
+  --btn-ter-bg:                   var(--dark-button-prime-tertiary-background);
+  --btn-ter-text:                 var(--dark-button-prime-tertiary-text);
+  --btn-ter-border:               var(--dark-button-prime-tertiary-border);
+
+  /* Button / Brand */
+  --btn-brand-bg:                 var(--dark-button-brand-background);
+  --btn-brand-text:               var(--dark-button-brand-text);
+  --btn-brand-border:             var(--dark-button-brand-border);
+
+  /* Button / Destructive */
+  --btn-destructive-bg:           var(--dark-button-destructive-primary-background);
+  --btn-destructive-text:         var(--dark-button-destructive-primary-text);
+
+  /* Button / Disabled */
+  --btn-disabled-bg:              var(--dark-button-disabled-background);
+  --btn-disabled-text:            var(--dark-button-disabled-text);
+
+  /* Button / Odds */
+  --btn-odds-bg:                  var(--dark-button-odds-background);
+  --btn-odds-text:                var(--dark-button-odds-text);
+  --btn-odds-border:              var(--dark-button-odds-border);
+  --btn-odds-bg-hover:            var(--dark-button-odds-background-hover);
+
+  /* Button / Toggle */
+  --btn-toggle-unsel-bg:          var(--dark-button-toggle-unselected-background);
+  --btn-toggle-unsel-text:        var(--dark-button-toggle-unselected-text);
+  --btn-toggle-unsel-border:      var(--dark-button-toggle-unselected-border);
+  --btn-toggle-sel-bg:            var(--dark-button-toggle-selected-background);
+  --btn-toggle-sel-text:          var(--dark-button-toggle-selected-text);
+
+  /* Button / Icon */
+  --btn-icon-bg:                  var(--dark-button-icon-background);
+  --btn-icon-icon:                var(--dark-button-icon-icon);
+
+  /* Button / Pinned */
+  --btn-pinned-bg:                var(--dark-button-pinned-background);
+  --btn-pinned-text:              var(--dark-button-pinned-text);
+}
+
+[data-mode="dynamic"] {
+  /* Surface */
+  --surface-primary:              var(--dynamic-surface-primary);
+  --surface-secondary:            var(--dynamic-surface-secondary);
+  --surface-tertiary:             var(--dynamic-surface-tertiary);
+  --surface-brand:                var(--dynamic-surface-brand);
+  --surface-overlay-solid:        var(--dynamic-surface-overlay-solid);
+  --surface-overlay-linear-full:  var(--dynamic-surface-overlay-linear-full);
+  --surface-overlay-linear-half:  var(--dynamic-surface-overlay-linear-half);
+  --surface-status-positive:      var(--dynamic-surface-status-positive);
+  --surface-status-negative:      var(--dynamic-surface-status-negative);
+  --surface-status-warning:       var(--dynamic-surface-status-warning);
+  --surface-status-alert:         var(--dynamic-surface-status-alert);
+  --surface-status-info:          var(--dynamic-surface-status-info);
+
+  /* Text */
+  --text-primary:                 var(--dynamic-text-primary);
+  --text-secondary:               var(--dynamic-text-secondary);
+  --text-tertiary:                var(--dynamic-text-tertiary);
+  --text-status:                  var(--dynamic-text-status);
+  --text-inverse:                 var(--dynamic-text-inverse);
+  --text-disabled:                var(--dynamic-text-disabled);
+  --text-selected:                var(--dynamic-text-selected);
+  --text-unselected:              var(--dynamic-text-unselected);
+  --text-positive:                var(--dynamic-text-positive);
+  --text-negative:                var(--dynamic-text-negative);
+  --text-warning:                 var(--dynamic-text-warning);
+  --text-alert:                   var(--dynamic-text-alert);
+  --text-info:                    var(--dynamic-text-info);
+  --text-link-primary:            var(--dynamic-text-link-primary);
+  --text-link-primary-hover:      var(--dynamic-text-link-primary-hover);
+  --text-link-secondary:          var(--dynamic-text-link-secondary);
+
+  /* Utility */
+  --utility-border:               var(--dynamic-utility-border);
+  --utility-border-hover:         var(--dynamic-utility-border-hover);
+  --utility-disabled:             var(--dynamic-utility-disabled);
+  --utility-ui-background:        var(--dynamic-utility-ui-background);
+  --utility-ui-background-hover:  var(--dynamic-utility-ui-background-hover);
+  --utility-ui-element-active:    var(--dynamic-utility-ui-element-active);
+  --utility-icon-primary:         var(--dynamic-utility-icon-primary);
+  --utility-icon-secondary:       var(--dynamic-utility-icon-secondary);
+  --utility-status-positive:      var(--dynamic-utility-status-positive);
+  --utility-status-negative:      var(--dynamic-utility-status-negative);
+  --utility-status-warning:       var(--dynamic-utility-status-warning);
+  --utility-status-alert:         var(--dynamic-utility-status-alert);
+  --utility-status-info:          var(--dynamic-utility-status-info);
+
+  /* Brand */
+  --brand-primary:                var(--dynamic-brand-primary);
+  --brand-secondary:              var(--dynamic-brand-secondary);
+  --brand-tertiary:               var(--dynamic-brand-tertiary);
+
+  /* Elevation */
+  --elevation-raised:             var(--dynamic-elevation-raised);
+  --elevation-navigation:         var(--dynamic-elevation-navigation);
+  --elevation-modal:              var(--dynamic-elevation-modal);
+
+  /* Button / Prime */
+  --btn-prime-bg:                 var(--dynamic-button-prime-primary-background);
+  --btn-prime-text:               var(--dynamic-button-prime-primary-text);
+  --btn-prime-border:             var(--dynamic-button-prime-primary-border);
+  --btn-prime-bg-hover:           var(--dynamic-button-prime-primary-background-hover);
+  --btn-prime-bg-pressed:         var(--dynamic-button-prime-primary-background-pressed);
+  --btn-sec-bg:                   var(--dynamic-button-prime-secondary-background);
+  --btn-sec-text:                 var(--dynamic-button-prime-secondary-text);
+  --btn-sec-border:               var(--dynamic-button-prime-secondary-border);
+  --btn-ter-bg:                   var(--dynamic-button-prime-tertiary-background);
+  --btn-ter-text:                 var(--dynamic-button-prime-tertiary-text);
+  --btn-ter-border:               var(--dynamic-button-prime-tertiary-border);
+
+  /* Button / Brand */
+  --btn-brand-bg:                 var(--dynamic-button-brand-background);
+  --btn-brand-text:               var(--dynamic-button-brand-text);
+  --btn-brand-border:             var(--dynamic-button-brand-border);
+
+  /* Button / Destructive */
+  --btn-destructive-bg:           var(--dynamic-button-destructive-primary-background);
+  --btn-destructive-text:         var(--dynamic-button-destructive-primary-text);
+
+  /* Button / Disabled */
+  --btn-disabled-bg:              var(--dynamic-button-disabled-background);
+  --btn-disabled-text:            var(--dynamic-button-disabled-text);
+
+  /* Button / Odds */
+  --btn-odds-bg:                  var(--dynamic-button-odds-background);
+  --btn-odds-text:                var(--dynamic-button-odds-text);
+  --btn-odds-border:              var(--dynamic-button-odds-border);
+  --btn-odds-bg-hover:            var(--dynamic-button-odds-background-hover);
+
+  /* Button / Toggle */
+  --btn-toggle-unsel-bg:          var(--dynamic-button-toggle-unselected-background);
+  --btn-toggle-unsel-text:        var(--dynamic-button-toggle-unselected-text);
+  --btn-toggle-unsel-border:      var(--dynamic-button-toggle-unselected-border);
+  --btn-toggle-sel-bg:            var(--dynamic-button-toggle-selected-background);
+  --btn-toggle-sel-text:          var(--dynamic-button-toggle-selected-text);
+
+  /* Button / Icon */
+  --btn-icon-bg:                  var(--dynamic-button-icon-background);
+  --btn-icon-icon:                var(--dynamic-button-icon-icon);
+
+  /* Button / Pinned */
+  --btn-pinned-bg:                var(--dynamic-button-pinned-background);
+  --btn-pinned-text:              var(--dynamic-button-pinned-text);
+}

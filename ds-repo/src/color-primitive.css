@@ -1,0 +1,150 @@
+:root {
+  /* Translucent White Scale */
+  --white-0: #FFFFFF00;
+  --white-5: #FFFFFF0D;
+  --white-10: #FFFFFF1A;
+  --white-15: #FFFFFF26;
+  --white-20: #FFFFFF33;
+  --white-25: #FFFFFF40;
+  --white-30: #FFFFFF4D;
+  --white-35: #FFFFFF59;
+  --white-40: #FFFFFF66;
+  --white-45: #FFFFFF73;
+  --white-50: #FFFFFF80;
+  --white-55: #FFFFFF8C;
+  --white-60: #FFFFFF99;
+  --white-65: #FFFFFFA6;
+  --white-70: #FFFFFFB2;
+  --white-75: #FFFFFFBF;
+  --white-80: #FFFFFFCC;
+  --white-85: #FFFFFFD9;
+  --white-90: #FFFFFFE5;
+  --white-95: #FFFFFFF2;
+  --white-100: #FFFFFF;
+
+  /* Translucent Black Scale */
+  --black-0: #03031D00;
+  --black-5: #03031D0D;
+  --black-10: #03031D17;
+  --black-15: #04031C26;
+  --black-20: #05041B33;
+  --black-25: #06051A40;
+  --black-30: #0706184D;
+  --black-35: #08071659;
+  --black-40: #09081566;
+  --black-45: #0A091473;
+  --black-50: #0B0A1380;
+  --black-55: #0C0B128C;
+  --black-60: #0D0C1199;
+  --black-65: #0E0D10A6;
+  --black-70: #0F0E10B2;
+  --black-75: #101010BF;
+  --black-80: #101010CC;
+  --black-85: #101010D9;
+  --black-90: #101010E5;
+  --black-95: #101010F2;
+  --black-100: #101010;
+
+  /* Neutral */
+  --neutral-0: #F5F5F7;
+  --neutral-5: #F2F2F5;
+  --neutral-10: #E2E2E9;
+  --neutral-20: #C8C8D0;
+  --neutral-30: #ACACB9;
+  --neutral-40: #9191A1;
+  --neutral-50: #787887;
+  --neutral-60: #5F5F6C;
+  --neutral-70: #484853;
+  --neutral-80: #3B3B47;
+  --neutral-90: #2E2E38;
+  --neutral-95: #1A1A20;
+  --neutral-100: #0B0B0D;
+
+  /* Blue */
+  --blue-0: #EBF2FF;
+  --blue-5: #DFE9FA;
+  --blue-10: #C2D5F8;
+  --blue-20: #88B0F7;
+  --blue-30: #5591FA;
+  --blue-40: #2E76FB;
+  --blue-50: #0B5EF5;
+  --blue-60: #004ACE; /* CBS Sports Brand */
+  --blue-70: #0036B5;
+  --blue-80: #04289E;
+  --blue-90: #0C1F7F;
+  --blue-95: #1A295A;
+  --blue-100: #1A253B;
+
+  /* Green */
+  --green-0: #ECFEF5;
+  --green-5: #DDFAEC;
+  --green-10: #BAF1D7;
+  --green-20: #75EDBF;
+  --green-30: #37E0A8;
+  --green-40: #11CD9E;
+  --green-50: #02B89B;
+  --green-60: #02A48F;
+  --green-70: #018F7D;
+  --green-80: #017969;
+  --green-90: #01594D;
+  --green-95: #01342E;
+  --green-100: #142726;
+
+  /* Red */
+  --red-0: #FDEAE8;
+  --red-5: #FFDFDB;
+  --red-10: #FFC4BF;
+  --red-20: #FF9E96;
+  --red-30: #FF776B;
+  --red-40: #FE5443;
+  --red-50: #E62717;
+  --red-60: #CC1808;
+  --red-70: #AD180B;
+  --red-80: #8F170C;
+  --red-90: #76150C;
+  --red-95: #48140F;
+  --red-100: #311A1A;
+
+  /* Yellow */
+  --yellow-0: #FAF7D4;
+  --yellow-5: #FCF0AE;
+  --yellow-10: #FDE794;
+  --yellow-20: #FFDE70;
+  --yellow-30: #FFD23D;
+  --yellow-40: #FFCA1A;
+  --yellow-50: #EDAE10;
+  --yellow-60: #CD960F;
+  --yellow-70: #AA7B0C;
+  --yellow-80: #8C6108;
+  --yellow-90: #604102;
+  --yellow-95: #3F2900;
+  --yellow-100: #2E1F00;
+
+  /* Elevation / Light */
+  --light-elevation-0:  0px 0px 2px var(--black-10), 0px 0px 2px var(--black-10);
+  --light-elevation-5:  0px 0px 2px var(--black-10), 0px 1px 4px var(--black-10);
+  --light-elevation-10: 0px 0px 2px var(--black-10), 0px 2px 8px var(--black-10);
+  --light-elevation-20: 0px 0px 2px var(--black-10), 0px 4px 12px var(--black-10);
+  --light-elevation-30: 0px 0px 2px var(--black-10), 0px 6px 16px var(--black-10);
+  --light-elevation-40: 0px 0px 2px var(--black-15), 0px 8px 20px var(--black-10);
+  --light-elevation-50: 0px 0px 2px var(--black-15), 0px 10px 24px var(--black-10);
+
+  /* Elevation / Dark */
+  --dark-elevation-0:  0px 0px 2px var(--black-20), 0px 0px 2px var(--black-60);
+  --dark-elevation-5:  0px 0px 2px var(--black-20), 0px 1px 4px var(--black-60);
+  --dark-elevation-10: 0px 0px 2px var(--black-20), 0px 2px 8px var(--black-60);
+  --dark-elevation-20: 0px 0px 2px var(--black-20), 0px 4px 12px var(--black-60);
+  --dark-elevation-30: 0px 0px 2px var(--black-20), 0px 6px 16px var(--black-60);
+  --dark-elevation-40: 0px 0px 2px var(--black-20), 0px 8px 20px var(--black-60);
+  --dark-elevation-50: 0px 0px 2px var(--black-20), 0px 10px 24px var(--black-60);
+
+  /* Elevation / Dynamic */
+  --dynamic-elevation-0:  0px 0px 2px var(--black-20), 0px 0px 2px var(--black-30);
+  --dynamic-elevation-5:  0px 0px 2px var(--black-20), 0px 1px 4px var(--black-30);
+  --dynamic-elevation-10: 0px 0px 2px var(--black-20), 0px 2px 8px var(--black-30);
+  --dynamic-elevation-20: 0px 0px 2px var(--black-20), 0px 4px 12px var(--black-30);
+  --dynamic-elevation-30: 0px 0px 2px var(--black-20), 0px 6px 16px var(--black-30);
+  --dynamic-elevation-40: 0px 0px 2px var(--black-20), 0px 8px 20px var(--black-30);
+  --dynamic-elevation-50: 0px 0px 2px var(--black-20), 0px 10px 24px var(--black-30);
+
+}

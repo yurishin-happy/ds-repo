@@ -1,0 +1,208 @@
+[data-mode="dynamic"] {
+
+  /* Text */
+  --dynamic-text-primary: var(--white-100);
+  --dynamic-text-secondary: var(--white-80);
+  --dynamic-text-tertiary: var(--white-70);
+  --dynamic-text-status: var(--white-100);
+  --dynamic-text-inverse: var(--neutral-90);
+  --dynamic-text-disabled: var(--white-40);
+  --dynamic-text-selected: var(--white-100);
+  --dynamic-text-unselected: var(--white-80);
+  --dynamic-text-positive: var(--green-50);
+  --dynamic-text-positive-hover: var(--green-40);
+  --dynamic-text-negative: var(--red-40);
+  --dynamic-text-negative-hover: var(--red-30);
+  --dynamic-text-warning: var(--yellow-90);
+  --dynamic-text-warning-inverse: var(--yellow-10);
+  --dynamic-text-warning-hover: var(--yellow-5);
+  --dynamic-text-alert: var(--red-40);
+  --dynamic-text-alert-hover: var(--red-30);
+  --dynamic-text-info: var(--blue-30);
+  --dynamic-text-info-hover: var(--blue-20);
+  --dynamic-text-link-primary: var(--white-100);
+  --dynamic-text-link-primary-hover: var(--white-80);
+  --dynamic-text-link-primary-pressed: var(--white-60);
+  --dynamic-text-link-secondary: var(--blue-30);
+  --dynamic-text-link-secondary-hover: var(--blue-20);
+  --dynamic-text-link-secondary-pressed: var(--blue-10);
+
+  /* Surface */
+  --dynamic-surface-primary: var(--black-0);
+  --dynamic-surface-secondary: var(--black-20);
+  --dynamic-surface-tertiary: var(--black-35);
+  --dynamic-surface-brand: var(--blue-60);
+  --dynamic-surface-status-positive: var(--black-20);
+  --dynamic-surface-status-negative: var(--black-20);
+  --dynamic-surface-status-warning: var(--black-20);
+  --dynamic-surface-status-alert: var(--black-20);
+  --dynamic-surface-status-info: var(--black-20);
+  --dynamic-surface-overlay-solid: var(--black-75);
+  --dynamic-surface-overlay-linear-full: linear-gradient(to top, var(--black-100) 0%, var(--black-80) 50%, var(--black-0) 100%);
+  --dynamic-surface-overlay-linear-half: linear-gradient(to top, var(--black-50) 0%, var(--black-0) 50%);
+
+  /* Utility */
+  --dynamic-utility-border: var(--white-25);
+  --dynamic-utility-border-hover: var(--white-70);
+  --dynamic-utility-disabled: var(--white-40);
+  --dynamic-utility-ui-background: var(--black-0);
+  --dynamic-utility-ui-background-hover: var(--white-15);
+  --dynamic-utility-ui-background-disabled: var(--white-15);
+  --dynamic-utility-ui-element-active: var(--white-100);
+  --dynamic-utility-icon-primary: var(--white-100);
+  --dynamic-utility-icon-secondary: var(--white-80);
+  --dynamic-utility-status-positive: var(--green-80);
+  --dynamic-utility-status-positive-hover: var(--green-70);
+  --dynamic-utility-status-negative: var(--red-50);
+  --dynamic-utility-status-negative-hover: var(--red-40);
+  --dynamic-utility-status-warning: var(--yellow-30);
+  --dynamic-utility-status-warning-hover: var(--yellow-20);
+  --dynamic-utility-status-alert: var(--red-50);
+  --dynamic-utility-status-alert-hover: var(--red-40);
+  --dynamic-utility-status-info: var(--blue-50);
+  --dynamic-utility-status-info-hover: var(--blue-40);
+
+  /* Brand */
+  --dynamic-brand-primary: var(--white-100);
+  --dynamic-brand-secondary: var(--white-80);
+  --dynamic-brand-tertiary: var(--white-65);
+
+  /* Elevation */
+  --dynamic-elevation-raised:     var(--dynamic-elevation-10);
+  --dynamic-elevation-navigation: var(--dynamic-elevation-40);
+  --dynamic-elevation-modal:      var(--dynamic-elevation-50);
+
+  /* Table */
+  --dynamic-table-base-background: var(--black-0);
+  --dynamic-table-base-border-primary: var(--white-100);
+  --dynamic-table-base-border-secondary: var(--white-15);
+  --dynamic-table-header-row-background: var(--black-0);
+  --dynamic-table-header-text: var(--white-70);
+  --dynamic-table-header-text-hover: var(--white-60);
+  --dynamic-table-header-column-background-primary: var(--black-0);
+  --dynamic-table-header-column-background-secondary: var(--black-15);
+  --dynamic-table-body-row-background-primary: var(--black-0);
+  --dynamic-table-body-row-background-secondary: var(--black-15);
+  --dynamic-table-body-row-background-hover: var(--black-15);
+  --dynamic-table-body-text-primary: var(--white-100);
+  --dynamic-table-body-text-secondary: var(--white-75);
+  --dynamic-table-body-column-background-active: var(--black-15);
+  --dynamic-table-body-column-background-primary: var(--black-0);
+  --dynamic-table-body-column-background-secondary: var(--black-15);
+
+  /* Button */
+
+  /* Button / Loading */
+  --dynamic-button-loading-background: var(--black-10);
+  --dynamic-button-loading-border: var(--black-0);
+  --dynamic-button-loading-icon-active: var(--white-100);
+  --dynamic-button-loading-icon-inactive: var(--white-50);
+
+  /* Button / Disabled */
+  --dynamic-button-disabled-background: var(--black-15);
+  --dynamic-button-disabled-border: var(--black-0);
+  --dynamic-button-disabled-text: var(--white-40);
+
+  /* Button / Brand */
+  --dynamic-button-brand-background: var(--blue-50);
+  --dynamic-button-brand-border: var(--white-0);
+  --dynamic-button-brand-text: var(--white-100);
+  --dynamic-button-brand-background-hover: var(--blue-50);
+  --dynamic-button-brand-border-hover: var(--white-0);
+  --dynamic-button-brand-text-hover: var(--white-100);
+  --dynamic-button-brand-background-pressed: var(--blue-40);
+  --dynamic-button-brand-border-pressed: var(--white-0);
+  --dynamic-button-brand-text-pressed: var(--white-100);
+
+  /* Button / Prime */
+  --dynamic-button-prime-primary-background: var(--white-100);
+  --dynamic-button-prime-primary-border: var(--white-0);
+  --dynamic-button-prime-primary-text: var(--neutral-90);
+  --dynamic-button-prime-primary-background-hover: var(--white-95);
+  --dynamic-button-prime-primary-border-hover: var(--white-0);
+  --dynamic-button-prime-primary-text-hover: var(--neutral-90);
+  --dynamic-button-prime-primary-background-pressed: var(--white-90);
+  --dynamic-button-prime-primary-border-pressed: var(--white-0);
+  --dynamic-button-prime-primary-text-pressed: var(--neutral-90);
+  --dynamic-button-prime-secondary-background: var(--black-15);
+  --dynamic-button-prime-secondary-border: var(--white-10);
+  --dynamic-button-prime-secondary-text: var(--white-100);
+  --dynamic-button-prime-secondary-background-hover: var(--black-20);
+  --dynamic-button-prime-secondary-border-hover: var(--white-10);
+  --dynamic-button-prime-secondary-text-hover: var(--white-100);
+  --dynamic-button-prime-secondary-background-pressed: var(--black-25);
+  --dynamic-button-prime-secondary-border-pressed: var(--white-10);
+  --dynamic-button-prime-secondary-text-pressed: var(--white-100);
+  --dynamic-button-prime-tertiary-background: var(--white-0);
+  --dynamic-button-prime-tertiary-border: var(--white-30);
+  --dynamic-button-prime-tertiary-text: var(--white-100);
+  --dynamic-button-prime-tertiary-background-hover: var(--white-0);
+  --dynamic-button-prime-tertiary-border-hover: var(--white-70);
+  --dynamic-button-prime-tertiary-text-hover: var(--white-100);
+  --dynamic-button-prime-tertiary-background-pressed: var(--white-0);
+  --dynamic-button-prime-tertiary-border-pressed: var(--white-80);
+  --dynamic-button-prime-tertiary-text-pressed: var(--white-100);
+
+  /* Button / Destructive */
+  --dynamic-button-destructive-primary-background: var(--red-60);
+  --dynamic-button-destructive-primary-border: var(--white-0);
+  --dynamic-button-destructive-primary-text: var(--white-100);
+  --dynamic-button-destructive-primary-background-hover: var(--red-50);
+  --dynamic-button-destructive-primary-border-hover: var(--white-0);
+  --dynamic-button-destructive-primary-text-hover: var(--white-100);
+  --dynamic-button-destructive-primary-background-pressed: var(--red-40);
+  --dynamic-button-destructive-primary-border-pressed: var(--white-0);
+  --dynamic-button-destructive-primary-text-pressed: var(--white-100);
+
+  /* Button / Toggle */
+  --dynamic-button-toggle-unselected-background: var(--white-0);
+  --dynamic-button-toggle-unselected-border: var(--white-15);
+  --dynamic-button-toggle-unselected-text: var(--white-100);
+  --dynamic-button-toggle-unselected-background-hover: var(--white-0);
+  --dynamic-button-toggle-unselected-border-hover: var(--white-70);
+  --dynamic-button-toggle-unselected-text-hover: var(--white-100);
+  --dynamic-button-toggle-unselected-background-pressed: var(--white-0);
+  --dynamic-button-toggle-unselected-border-pressed: var(--white-80);
+  --dynamic-button-toggle-unselected-text-pressed: var(--white-100);
+  --dynamic-button-toggle-selected-background: var(--white-100);
+  --dynamic-button-toggle-selected-border: var(--white-0);
+  --dynamic-button-toggle-selected-text: var(--neutral-90);
+  --dynamic-button-toggle-selected-background-hover: var(--white-95);
+  --dynamic-button-toggle-selected-border-hover: var(--white-0);
+  --dynamic-button-toggle-selected-text-hover: var(--neutral-90);
+  --dynamic-button-toggle-selected-background-pressed: var(--white-90);
+  --dynamic-button-toggle-selected-border-pressed: var(--white-0);
+  --dynamic-button-toggle-selected-text-pressed: var(--neutral-90);
+
+  /* Button / Pinned */
+  --dynamic-button-pinned-background: var(--white-100);
+  --dynamic-button-pinned-border: var(--white-0);
+  --dynamic-button-pinned-text: var(--neutral-90);
+  --dynamic-button-pinned-background-hover: var(--neutral-5);
+  --dynamic-button-pinned-border-hover: var(--white-0);
+  --dynamic-button-pinned-text-hover: var(--neutral-90);
+  --dynamic-button-pinned-background-pressed: var(--neutral-10);
+  --dynamic-button-pinned-border-pressed: var(--white-0);
+  --dynamic-button-pinned-text-pressed: var(--neutral-90);
+
+  /* Button / Odds */
+  --dynamic-button-odds-background: var(--white-0);
+  --dynamic-button-odds-border: var(--white-15);
+  --dynamic-button-odds-text: var(--white-100);
+  --dynamic-button-odds-background-hover: var(--white-0);
+  --dynamic-button-odds-border-hover: var(--white-70);
+  --dynamic-button-odds-text-hover: var(--white-100);
+  --dynamic-button-odds-background-pressed: var(--white-0);
+  --dynamic-button-odds-border-pressed: var(--white-80);
+  --dynamic-button-odds-text-pressed: var(--white-100);
+
+  /* Button / Icon */
+  --dynamic-button-icon-background: var(--black-15);
+  --dynamic-button-icon-border: var(--black-0);
+  --dynamic-button-icon-background-hover: var(--black-20);
+  --dynamic-button-icon-border-hover: var(--black-0);
+  --dynamic-button-icon-background-pressed: var(--black-25);
+  --dynamic-button-icon-border-pressed: var(--black-0);
+  --dynamic-button-icon-icon: var(--white-100);
+
+}
