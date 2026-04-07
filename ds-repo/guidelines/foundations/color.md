@@ -28,15 +28,20 @@ Component-level override (within any page):
 ### Surface
 
 ```
+surface-primary is the default — most components live here.
+
 Which surface token?
 │
-├─ Bottom-most page background?          → surface-secondary
-├─ Main content area?                    → surface-primary
-├─ Card, panel, modal container?         → surface-tertiary
-├─ Subscribe / brand CTA surface?        → surface-brand
-├─ Behind a modal or popover?            → surface-overlay-solid
-├─ Darkening most of an image/video?     → surface-overlay-linear-full
-└─ Subtle fade at the bottom of media?   → surface-overlay-linear-half
+├─ Article section, page panel, or main content area?   → surface-primary  ← default
+├─ Page floor visible as a gutter or gap between        → surface-secondary
+│   content sections?
+├─ Chip, score box, or small container elevated         → surface-tertiary
+│   on top of a primary surface?
+├─ Modal or dialog box?                                 → surface-tertiary
+├─ Subscribe / brand CTA surface?                       → surface-brand
+├─ Behind a modal or popover?                           → surface-overlay-solid
+├─ Darkening most of an image/video?                    → surface-overlay-linear-full
+└─ Subtle fade at the bottom of media?                  → surface-overlay-linear-half
 ```
 
 ### Text
