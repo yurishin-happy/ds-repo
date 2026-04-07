@@ -37,8 +37,8 @@ Which surface token?
 │   content sections?
 ├─ Chip, score box, or small container elevated         → surface-tertiary
 │   on top of a primary surface?
-├─ Modal or dialog box?                                 → surface-tertiary
-├─ Subscribe / brand CTA surface?                       → surface-brand
+├─ Modal or dialog box?                                 → surface-primary
+├─ Container inside of Modal or dialog box?             → surface-tertiary
 ├─ Behind a modal or popover?                           → surface-overlay-solid
 ├─ Darkening most of an image/video?                    → surface-overlay-linear-full
 └─ Subtle fade at the bottom of media?                  → surface-overlay-linear-half
